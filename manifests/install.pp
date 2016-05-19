@@ -24,7 +24,7 @@ class consul::install {
         $do_notify_service = undef
       }
 
-      include '::archive'
+      include '::voxpupuli_archive'
       file { [
         $install_path,
         "${install_path}/consul-${consul::version}"]:
@@ -33,7 +33,7 @@ class consul::install {
         group  => 0, # 0 instead of root because OS X uses "wheel".
         mode   => '0555';
       }->
-      archive { "${install_path}/consul-${consul::version}.${consul::download_extension}":
+      voxpupuli_archive { "${install_path}/consul-${consul::version}.${consul::download_extension}":
         ensure       => present,
         source       => $consul::real_download_url,
         extract      => true,
