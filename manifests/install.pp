@@ -24,6 +24,7 @@ class consul::install {
         $do_notify_service = undef
       }
 
+      include '::archive'
       file { [
         $install_path,
         "${install_path}/consul-${consul::version}"]:
@@ -33,9 +34,11 @@ class consul::install {
         mode   => '0555';
       }->
       archive { "${install_path}/consul-${consul::version}.${consul::download_extension}":
-        ensure   => present,
-        url      => $consul::real_download_url,
-        target   => "${install_path}/consul-${consul::version}";
+        ensure       => present,
+        source       => $consul::real_download_url,
+        extract      => true,
+        extract_path => "${install_path}/consul-${consul::version}",
+        creates      => "${install_path}/consul-${consul::version}/consul",
       }->
       file {
         "${install_path}/consul-${consul::version}/consul":
