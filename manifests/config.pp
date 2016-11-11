@@ -15,10 +15,10 @@ class consul::config(
   $purge = true,
 ) {
 
-  if $consul::init_style {
+  if $::consul::init_style != 'unmanaged' {
 
-    case $consul::init_style {
-      'upstart' : {
+    case $::consul::init_style {
+      'upstart': {
         file { '/etc/init/consul.conf':
           mode    => '0444',
           owner   => 'root',
@@ -33,7 +33,7 @@ class consul::config(
           mode   => '0755',
         }
       }
-      'systemd' : {
+      'systemd': {
         file { '/lib/systemd/system/consul.service':
           mode    => '0644',
           owner   => 'root',
@@ -46,7 +46,7 @@ class consul::config(
           refreshonly => true,
         }
       }
-      'init' : {
+      'init','redhat': {
         file { '/etc/init.d/consul':
           mode    => '0555',
           owner   => 'root',
@@ -54,7 +54,7 @@ class consul::config(
           content => template('consul/consul.init.erb')
         }
       }
-      'debian' : {
+      'debian': {
         file { '/etc/init.d/consul':
           mode    => '0555',
           owner   => 'root',
@@ -62,7 +62,7 @@ class consul::config(
           content => template('consul/consul.debian.erb')
         }
       }
-      'sles' : {
+      'sles': {
         file { '/etc/init.d/consul':
           mode    => '0555',
           owner   => 'root',
@@ -70,7 +70,7 @@ class consul::config(
           content => template('consul/consul.sles.erb')
         }
       }
-      'launchd' : {
+      'launchd': {
         file { '/Library/LaunchDaemons/io.consul.daemon.plist':
           mode    => '0644',
           owner   => 'root',
@@ -78,26 +78,26 @@ class consul::config(
           content => template('consul/consul.launchd.erb')
         }
       }
-      default : {
+      default: {
         fail("I don't know how to create an init script for style ${consul::init_style}")
       }
     }
   }
 
-  file { $consul::config_dir:
+  file { $::consul::config_dir:
     ensure  => 'directory',
-    owner   => $consul::user,
-    group   => $consul::group,
+    owner   => $::consul::user,
+    group   => $::consul::group,
     purge   => $purge,
     recurse => $purge,
   } ->
   file { 'consul config.json':
     ensure  => present,
     path    => "${consul::config_dir}/config.json",
-    owner   => $consul::user,
-    group   => $consul::group,
-    mode    => $consul::config_mode,
-    content => consul_sorted_json($config_hash, $consul::pretty_config, $consul::pretty_config_indent),
+    owner   => $::consul::user,
+    group   => $::consul::group,
+    mode    => $::consul::config_mode,
+    content => consul_sorted_json($config_hash, $::consul::pretty_config, $::consul::pretty_config_indent),
   }
 
 }
