@@ -78,6 +78,9 @@ class consul::config(
           content => template('consul/consul.launchd.erb')
         }
       }
+      'scm': {
+        # there is no installation script for the service installation manager
+      }
       default: {
         fail("I don't know how to create an init script for style ${consul::init_style}")
       }
