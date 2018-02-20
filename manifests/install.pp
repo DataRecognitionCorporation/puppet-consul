@@ -30,19 +30,19 @@ class consul::install {
       $binary_name = 'consul.exe'
       $binary_owner = 'Administrators'
       $binary_group = 'Users'
+      $binary_mode = undef
     }
     default: {
       $binary_name = 'consul'
       $binary_owner = 'root'
       # 0 instead of root because OS X uses "wheel".
       $binary_group = 0
+      $binary_mode = '0555'
     }
   }
 
   case $::consul::install_method {
     'url': {
-      $install_path = $::consul::archive_path
-
       # only notify if we are installing a new version (work around for switching to archive module)
       if $::consul_version != $::consul::version {
         $do_notify_service = $::consul::notify_service
@@ -50,14 +50,17 @@ class consul::install {
         $do_notify_service = undef
       }
 
-      include '::voxpupuli_archive'
+      if $::operatingsystem != 'windows' {
+        include '::archive'
+      }
+
       file { [
         $install_path,
         "${install_path}/consul-${consul::version}"]:
         ensure => directory,
-        owner  => 'root',
-        group  => 0, # 0 instead of root because OS X uses "wheel".
-        mode   => '0555';
+        owner  => $binary_owner,
+        group  => $binary_group,
+        mode   => $binary_mode;
       }->
       archive { "${install_path}/consul-${consul::version}.${consul::download_extension}":
         ensure       => present,
@@ -70,7 +73,7 @@ class consul::install {
         "${install_path}/consul-${consul::version}/${binary_name}":
           owner => $binary_owner,
           group => $binary_group,
-          mode  => '0555';
+          mode  => $binary_mode;
         "${consul::bin_dir}/${binary_name}":
           ensure => link,
           notify => $do_notify_service,
