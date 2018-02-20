@@ -41,6 +41,8 @@ class consul::install {
 
   case $::consul::install_method {
     'url': {
+      $install_path = $::consul::archive_path
+
       # only notify if we are installing a new version (work around for switching to archive module)
       if $::consul_version != $::consul::version {
         $do_notify_service = $::consul::notify_service
@@ -48,11 +50,14 @@ class consul::install {
         $do_notify_service = undef
       }
 
-      include '::archive'
+      include '::voxpupuli_archive'
       file { [
         $install_path,
         "${install_path}/consul-${consul::version}"]:
         ensure => directory,
+        owner  => 'root',
+        group  => 0, # 0 instead of root because OS X uses "wheel".
+        mode   => '0555';
       }->
       archive { "${install_path}/consul-${consul::version}.${consul::download_extension}":
         ensure       => present,
