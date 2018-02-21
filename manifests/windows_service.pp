@@ -39,8 +39,8 @@ class consul::windows_service(
   }->
   exec { 'consul_service_install':
     cwd => $consul::bin_dir,
-    command => "${nssm_exe} install Consul \"${app_exec}\"",
-    unless => 'get-service -name consul',
+    command => "${nssm_exec} install Consul \"${app_exec}\"",
+    unless => 'if((Get-Service -Name Consul -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { exit 0; } else { exit 1; }',
     logoutput => true,
     provider => 'powershell',
     notify => Exec['consul_service_set_parameters']
