@@ -1,3 +1,5 @@
+require 'puppet/parameter/boolean'
+
 Puppet::Type.newtype(:consul_prepared_query) do
 
   desc <<-'EOD'
@@ -51,6 +53,14 @@ Puppet::Type.newtype(:consul_prepared_query) do
     end
   end
 
+  newparam(:service_near) do
+    desc 'Resurn results in ascending order of estimated RTT from given node name, or _agent special value'
+    defaultto ''
+    validate do |value|
+      raise ArgumentError, "Near parameter must be a string" if not value.is_a?(String)
+    end
+  end
+
   newparam(:service_only_passing) do
     desc 'Only return services in the passing state'
     defaultto false
@@ -79,7 +89,7 @@ Puppet::Type.newtype(:consul_prepared_query) do
     desc 'ID of prepared query'
   end
 
-  newproperty(:protocol) do
+  newparam(:protocol) do
     desc 'consul protocol'
     newvalues('http', 'https')
     defaultto 'http'
@@ -106,6 +116,27 @@ Puppet::Type.newtype(:consul_prepared_query) do
     defaultto 3
     validate do |value|
       raise ArgumentError, "Number of API tries must be a number" if not value.is_a?(Integer)
+    end
+  end
+
+  newparam(:template, :boolean => true, :parent => Puppet::Parameter::Boolean) do
+    desc 'is template?'
+    defaultto false
+  end
+
+  newparam(:template_regexp) do
+    desc 'regexp for template'
+    defaultto ''
+    validate do |value|
+      raise ArgumentError, "The template regexp must be a string" if not value.is_a?(String)
+    end
+  end
+
+  newparam(:template_type) do
+    desc 'type for template'
+    defaultto 'name_prefix_match'
+    validate do |value|
+      raise ArgumentError, "The template type must be a string" if not value.is_a?(String)
     end
   end
 end

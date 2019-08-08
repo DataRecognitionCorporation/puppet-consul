@@ -1,7 +1,341 @@
 # Change Log
 
-## [1.1.0](https://github.com/solarkennedy/puppet-consul/tree/1.1.0) (2016-09-23)
-[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v1.0.10...1.1.0)
+## [5.1.0](https://github.com/solarkennedy/puppet-consul/tree/5.1.0) (2019-07-23)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v5.0.4...5.1.0)
+
+**Implemented enhancements:**
+
+- Lint, style, and parameter data types [\#476](https://github.com/solarkennedy/puppet-consul/pull/476) ([natemccurdy](https://github.com/natemccurdy))
+- Support for Consul 1.4.0+ ACL system [\#474](https://github.com/solarkennedy/puppet-consul/pull/474) ([SkydiveMarius](https://github.com/SkydiveMarius))
+- quote all values of tags, meta & node\_meta [\#473](https://github.com/solarkennedy/puppet-consul/pull/473) ([tmu-sprd](https://github.com/tmu-sprd))
+
+**Closed issues:**
+
+- Feature Request: support special policies like `acl` and `operator` without segment option [\#482](https://github.com/solarkennedy/puppet-consul/issues/482)
+- New 1.4+ ACL support is not idempotent [\#479](https://github.com/solarkennedy/puppet-consul/issues/479)
+- option to strip binary [\#478](https://github.com/solarkennedy/puppet-consul/issues/478)
+- \[Feature request\] Provide support for Consul 1.4.0+ ACL System [\#471](https://github.com/solarkennedy/puppet-consul/issues/471)
+- Can we get a new release to forge soon? [\#469](https://github.com/solarkennedy/puppet-consul/issues/469)
+- Can't use integer on meta hash on services [\#468](https://github.com/solarkennedy/puppet-consul/issues/468)
+- Quoted integer \(string\) to integer is breaking tags [\#283](https://github.com/solarkennedy/puppet-consul/issues/283)
+
+**Merged pull requests:**
+
+- resources 'acl' and 'operator' don't have a segment [\#483](https://github.com/solarkennedy/puppet-consul/pull/483) ([tmu-sprd](https://github.com/tmu-sprd))
+- Fixing idempotence issues of new ACL system + improved handling of properties [\#480](https://github.com/solarkennedy/puppet-consul/pull/480) ([SkydiveMarius](https://github.com/SkydiveMarius))
+- Switch from anchor pattern to contain function [\#475](https://github.com/solarkennedy/puppet-consul/pull/475) ([natemccurdy](https://github.com/natemccurdy))
+- fix case where multiple http\_addr [\#470](https://github.com/solarkennedy/puppet-consul/pull/470) ([robmbrooks](https://github.com/robmbrooks))
+
+## [v5.0.4](https://github.com/solarkennedy/puppet-consul/tree/v5.0.4) (2019-02-10)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v5.0.3...v5.0.4)
+
+**Implemented enhancements:**
+
+- add optional service meta hash [\#466](https://github.com/solarkennedy/puppet-consul/pull/466) ([jardleex](https://github.com/jardleex))
+- Add service\_config\_hash to customize services [\#460](https://github.com/solarkennedy/puppet-consul/pull/460) ([dan-wittenberg](https://github.com/dan-wittenberg))
+
+**Fixed bugs:**
+
+- Don't write out meta parameter when unset [\#467](https://github.com/solarkennedy/puppet-consul/pull/467) ([jarro2783](https://github.com/jarro2783))
+- Change allow for spaces in the path, Add extra\_options to the win agent [\#459](https://github.com/solarkennedy/puppet-consul/pull/459) ([monkey670](https://github.com/monkey670))
+
+**Merged pull requests:**
+
+- Updated windows support [\#464](https://github.com/solarkennedy/puppet-consul/pull/464) ([krjensen](https://github.com/krjensen))
+- PDK convert, merged changes, pdk validate linter cleanup of pp files [\#463](https://github.com/solarkennedy/puppet-consul/pull/463) ([dan-wittenberg](https://github.com/dan-wittenberg))
+
+## [v5.0.3](https://github.com/solarkennedy/puppet-consul/tree/v5.0.3) (2018-12-15)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v5.0.1...v5.0.3)
+
+**Fixed bugs:**
+
+- Don't monkey-patch the JSON module [\#456](https://github.com/solarkennedy/puppet-consul/pull/456) ([joshuaspence](https://github.com/joshuaspence))
+
+**Closed issues:**
+
+- Systemd fails to start Consul [\#455](https://github.com/solarkennedy/puppet-consul/issues/455)
+- Broken JSON module [\#452](https://github.com/solarkennedy/puppet-consul/issues/452)
+
+**Merged pull requests:**
+
+- release 5.0.2 [\#457](https://github.com/solarkennedy/puppet-consul/pull/457) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v5.0.1](https://github.com/solarkennedy/puppet-consul/tree/v5.0.1) (2018-10-31)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v4.0.0...v5.0.1)
+
+**Fixed bugs:**
+
+- undefined method `validate\_checks` on puppet 5.5.7/6.0.3 [\#448](https://github.com/solarkennedy/puppet-consul/issues/448)
+- Wrong init provider on Ubuntu 14.04 [\#438](https://github.com/solarkennedy/puppet-consul/issues/438)
+- Change "enableTagOverride" to "enable\_tag\_override" in version 1.0.0 and … [\#447](https://github.com/solarkennedy/puppet-consul/pull/447) ([wenzhengjiang](https://github.com/wenzhengjiang))
+
+**Closed issues:**
+
+- Version 4.0.0 is missing in git [\#445](https://github.com/solarkennedy/puppet-consul/issues/445)
+- Wrong dependencies in Puppet Forge [\#442](https://github.com/solarkennedy/puppet-consul/issues/442)
+
+**Merged pull requests:**
+
+- release 5.0.0 [\#449](https://github.com/solarkennedy/puppet-consul/pull/449) ([bastelfreak](https://github.com/bastelfreak))
+- Puppet 6 support [\#444](https://github.com/solarkennedy/puppet-consul/pull/444) ([l-lotz](https://github.com/l-lotz))
+
+## [v4.0.0](https://github.com/solarkennedy/puppet-consul/tree/v4.0.0) (2018-10-05)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.4.2...v4.0.0)
+
+**Merged pull requests:**
+
+- bump default consul version from 0.7.4 to 1.2.3 [\#443](https://github.com/solarkennedy/puppet-consul/pull/443) ([bastelfreak](https://github.com/bastelfreak))
+- Use $consul::version instead of facter consul\_version \(Fix 09297fa\) [\#419](https://github.com/solarkennedy/puppet-consul/pull/419) ([hfm](https://github.com/hfm))
+
+## [v3.4.2](https://github.com/solarkennedy/puppet-consul/tree/v3.4.2) (2018-10-03)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.4.1...v3.4.2)
+
+## [v3.4.1](https://github.com/solarkennedy/puppet-consul/tree/v3.4.1) (2018-10-03)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.4.0...v3.4.1)
+
+**Closed issues:**
+
+- Consul version upgrade to 1.2.0 [\#433](https://github.com/solarkennedy/puppet-consul/issues/433)
+- Telemetry [\#431](https://github.com/solarkennedy/puppet-consul/issues/431)
+- Release version 3.3.1 [\#428](https://github.com/solarkennedy/puppet-consul/issues/428)
+
+**Merged pull requests:**
+
+- Allow puppetlabs-stdlib v5.x [\#440](https://github.com/solarkennedy/puppet-consul/pull/440) ([hfm](https://github.com/hfm))
+- allow camptocamp/systemd 2.x [\#439](https://github.com/solarkennedy/puppet-consul/pull/439) ([l-lotz](https://github.com/l-lotz))
+- Fix broken testmatrix due to gem updates [\#437](https://github.com/solarkennedy/puppet-consul/pull/437) ([bastelfreak](https://github.com/bastelfreak))
+- Update Readme.md to Include Telemetry Settings [\#432](https://github.com/solarkennedy/puppet-consul/pull/432) ([Viktorker](https://github.com/Viktorker))
+
+## [v3.4.0](https://github.com/solarkennedy/puppet-consul/tree/v3.4.0) (2018-07-05)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.3.1...v3.4.0)
+
+**Implemented enhancements:**
+
+- Add tests for raft\_multiplier [\#429](https://github.com/solarkennedy/puppet-consul/pull/429) ([bastelfreak](https://github.com/bastelfreak))
+- allow management of CAP\_NET\_BIND\_SERVICE via systemd [\#427](https://github.com/solarkennedy/puppet-consul/pull/427) ([bastelfreak](https://github.com/bastelfreak))
+- add support for the beta UI [\#417](https://github.com/solarkennedy/puppet-consul/pull/417) ([bastelfreak](https://github.com/bastelfreak))
+- Add AArch64 \(arm64\) support [\#409](https://github.com/solarkennedy/puppet-consul/pull/409) ([ajungren](https://github.com/ajungren))
+- Add new parameters to configure consul permissions in the binary [\#408](https://github.com/solarkennedy/puppet-consul/pull/408) ([cristianjuve](https://github.com/cristianjuve))
+- Support space-separated list in addresses [\#406](https://github.com/solarkennedy/puppet-consul/pull/406) ([sw0x2A](https://github.com/sw0x2A))
+- Add `args` parameter to `consul::watch`  [\#404](https://github.com/solarkennedy/puppet-consul/pull/404) ([scottybrisbane](https://github.com/scottybrisbane))
+
+**Fixed bugs:**
+
+- protocol should be a param not property. [\#329](https://github.com/solarkennedy/puppet-consul/pull/329) ([chris-bmj](https://github.com/chris-bmj))
+
+**Closed issues:**
+
+- Performance Raft Multiplier [\#426](https://github.com/solarkennedy/puppet-consul/issues/426)
+- Consul 1.1.0 uses a new key for enableTagOverride [\#420](https://github.com/solarkennedy/puppet-consul/issues/420)
+- Allow for different consul and consul-ui versions. [\#384](https://github.com/solarkennedy/puppet-consul/issues/384)
+- uid/gid [\#353](https://github.com/solarkennedy/puppet-consul/issues/353)
+- Run configtest before reloading service [\#338](https://github.com/solarkennedy/puppet-consul/issues/338)
+- New prepared queries provider not accepting integers [\#291](https://github.com/solarkennedy/puppet-consul/issues/291)
+- Consul binary not found when puppet agent is daemonized [\#290](https://github.com/solarkennedy/puppet-consul/issues/290)
+- systemd Client Nodes Not Properly Leaving Cluster on Shutdown [\#282](https://github.com/solarkennedy/puppet-consul/issues/282)
+- Add Support for Windows [\#195](https://github.com/solarkennedy/puppet-consul/issues/195)
+
+**Merged pull requests:**
+
+- Release 3.4.0 [\#430](https://github.com/solarkennedy/puppet-consul/pull/430) ([bastelfreak](https://github.com/bastelfreak))
+- Add CentOS 6/7 acceptance tests [\#425](https://github.com/solarkennedy/puppet-consul/pull/425) ([bastelfreak](https://github.com/bastelfreak))
+- Add Ubuntu 18.04 / 16.04 support [\#424](https://github.com/solarkennedy/puppet-consul/pull/424) ([bastelfreak](https://github.com/bastelfreak))
+- Bump archive dependency to allow 3.X releases [\#423](https://github.com/solarkennedy/puppet-consul/pull/423) ([bastelfreak](https://github.com/bastelfreak))
+- Use $consul::version instead of facter consul\_version \(Fix 09297fa\) [\#419](https://github.com/solarkennedy/puppet-consul/pull/419) ([hfm](https://github.com/hfm))
+- Change enableTagOverride to enable\_tag\_override in Consul 1.1.0 and later [\#418](https://github.com/solarkennedy/puppet-consul/pull/418) ([hfm](https://github.com/hfm))
+- enable acceptance tests on travis [\#416](https://github.com/solarkennedy/puppet-consul/pull/416) ([bastelfreak](https://github.com/bastelfreak))
+- Added experimental Windows support [\#403](https://github.com/solarkennedy/puppet-consul/pull/403) ([iwagnerclgx](https://github.com/iwagnerclgx))
+
+## [v3.3.1](https://github.com/solarkennedy/puppet-consul/tree/v3.3.1) (2018-01-27)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.2.4...v3.3.1)
+
+**Closed issues:**
+
+- module errors on posix systems without unzip [\#402](https://github.com/solarkennedy/puppet-consul/issues/402)
+- Support for Amazon 2 OS  [\#396](https://github.com/solarkennedy/puppet-consul/issues/396)
+- Latest version doesn't work with Puppet 3.x \(breaking change?\) [\#394](https://github.com/solarkennedy/puppet-consul/issues/394)
+- Changing Consul kv values doesn't seem to have an effect [\#374](https://github.com/solarkennedy/puppet-consul/issues/374)
+- Clean out fixtures prior to uploading to forge [\#349](https://github.com/solarkennedy/puppet-consul/issues/349)
+
+**Merged pull requests:**
+
+- Added experimental Windows support [\#403](https://github.com/solarkennedy/puppet-consul/pull/403) ([iwagnerclgx](https://github.com/iwagnerclgx))
+- Removed command substitution in init script [\#401](https://github.com/solarkennedy/puppet-consul/pull/401) ([tooooots](https://github.com/tooooots))
+- Add `args` parameter to `consul::check` [\#400](https://github.com/solarkennedy/puppet-consul/pull/400) ([joshuaspence](https://github.com/joshuaspence))
+- Added the ui parameter and removed ui\_\* ones [\#398](https://github.com/solarkennedy/puppet-consul/pull/398) ([rawleto](https://github.com/rawleto))
+- support Amazon Linux 2 [\#397](https://github.com/solarkennedy/puppet-consul/pull/397) ([vchan2002](https://github.com/vchan2002))
+
+## [v3.2.4](https://github.com/solarkennedy/puppet-consul/tree/v3.2.4) (2017-12-05)
+
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.2.3...v3.2.4)
+
+**Merged pull requests:**
+
+- set correct namespace for systemd dependency [\#393](https://github.com/solarkennedy/puppet-consul/pull/393) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v3.2.3](https://github.com/solarkennedy/puppet-consul/tree/v3.2.3) (2017-12-05)
+
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.2.2...v3.2.3)
+
+## [v3.2.2](https://github.com/solarkennedy/puppet-consul/tree/v3.2.2) (2017-12-05)
+
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.2.0...v3.2.2)
+
+**Closed issues:**
+
+- consul\_sorted\_json for octal notation of file modes [\#389](https://github.com/solarkennedy/puppet-consul/issues/389)
+- Add hiera wrapper for ACL entries. [\#385](https://github.com/solarkennedy/puppet-consul/issues/385)
+- Config validation failed [\#383](https://github.com/solarkennedy/puppet-consul/issues/383)
+- default config\_dir broken on FreeBSD [\#360](https://github.com/solarkennedy/puppet-consul/issues/360)
+- Consul 0.8.0 is out! and it breaks a few things... [\#331](https://github.com/solarkennedy/puppet-consul/issues/331)
+
+**Merged pull requests:**
+
+- simplify systemd setup by using camptocamp/systemd [\#392](https://github.com/solarkennedy/puppet-consul/pull/392) ([bastelfreak](https://github.com/bastelfreak))
+- Do not unquote integers with a leading zero [\#391](https://github.com/solarkennedy/puppet-consul/pull/391) ([phaer](https://github.com/phaer))
+- replace fedora versions with current supported ones [\#390](https://github.com/solarkennedy/puppet-consul/pull/390) ([bastelfreak](https://github.com/bastelfreak))
+- set sane default shell for consul user [\#388](https://github.com/solarkennedy/puppet-consul/pull/388) ([bastelfreak](https://github.com/bastelfreak))
+- fix typo in check timeout [\#387](https://github.com/solarkennedy/puppet-consul/pull/387) ([lobeck](https://github.com/lobeck))
+- Fixes \#360 by setting config\_dir under FreeBSD [\#386](https://github.com/solarkennedy/puppet-consul/pull/386) ([madelaney](https://github.com/madelaney))
+- allow "args" and "script" for consul check config [\#382](https://github.com/solarkennedy/puppet-consul/pull/382) ([zg](https://github.com/zg))
+- Breaking: Update Puppet version to 4.7.1 and add data types [\#381](https://github.com/solarkennedy/puppet-consul/pull/381) ([wyardley](https://github.com/wyardley))
+- Handle consul\_acl connection refused as a retry-able error [\#336](https://github.com/solarkennedy/puppet-consul/pull/336) ([kpaulisse](https://github.com/kpaulisse))
+
+## [v3.2.0](https://github.com/solarkennedy/puppet-consul/tree/v3.2.0) (2017-11-20)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.1.2...v3.2.0)
+
+**Closed issues:**
+
+- Validate command for config files doesn't work [\#376](https://github.com/solarkennedy/puppet-consul/issues/376)
+
+**Merged pull requests:**
+
+- Removing the consul config check [\#380](https://github.com/solarkennedy/puppet-consul/pull/380) ([Faffnir](https://github.com/Faffnir))
+- \[issue/376\] [\#379](https://github.com/solarkennedy/puppet-consul/pull/379) ([khdevel](https://github.com/khdevel))
+- Fix updating of Consul KV store [\#378](https://github.com/solarkennedy/puppet-consul/pull/378) ([dannytrigo](https://github.com/dannytrigo))
+- Fix validate command for config files in consul 1.0.0 [\#377](https://github.com/solarkennedy/puppet-consul/pull/377) ([Faffnir](https://github.com/Faffnir))
+
+## [v3.1.2](https://github.com/solarkennedy/puppet-consul/tree/v3.1.2) (2017-10-26)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.1.1...v3.1.2)
+
+## [v3.1.1](https://github.com/solarkennedy/puppet-consul/tree/v3.1.1) (2017-10-24)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v3.0.0...v3.1.1)
+
+**Closed issues:**
+
+- what ACL rights required for consul\_acl part to run? [\#373](https://github.com/solarkennedy/puppet-consul/issues/373)
+- Consul k/v does not update to new value [\#363](https://github.com/solarkennedy/puppet-consul/issues/363)
+- How do you ensure unzip is installed? [\#356](https://github.com/solarkennedy/puppet-consul/issues/356)
+- changes to systemd template [\#354](https://github.com/solarkennedy/puppet-consul/issues/354)
+- Support for cloud -join switches [\#350](https://github.com/solarkennedy/puppet-consul/issues/350)
+- Switch from `%{linenumber}` to `%{line}` in v2 branch [\#346](https://github.com/solarkennedy/puppet-consul/issues/346)
+- 3.0.0 not tagged? [\#343](https://github.com/solarkennedy/puppet-consul/issues/343)
+
+**Merged pull requests:**
+
+- Validate config file before deploying [\#372](https://github.com/solarkennedy/puppet-consul/pull/372) ([kasimon](https://github.com/kasimon))
+- use proper systemd custom .service directory [\#366](https://github.com/solarkennedy/puppet-consul/pull/366) ([foxxx0](https://github.com/foxxx0))
+- \(\#359\) Datacenter support to consul\_key\_value [\#365](https://github.com/solarkennedy/puppet-consul/pull/365) ([houtmanj](https://github.com/houtmanj))
+- Don't pin so hard on ruby versions on travis [\#362](https://github.com/solarkennedy/puppet-consul/pull/362) ([solarkennedy](https://github.com/solarkennedy))
+- Fix issue with init script [\#361](https://github.com/solarkennedy/puppet-consul/pull/361) ([brandonrdn](https://github.com/brandonrdn))
+- added docker support [\#357](https://github.com/solarkennedy/puppet-consul/pull/357) ([Justin-DynamicD](https://github.com/Justin-DynamicD))
+- allow to specify a proxy server for package downloads [\#351](https://github.com/solarkennedy/puppet-consul/pull/351) ([xavvo](https://github.com/xavvo))
+- Support "Near" parameter in prepared queries [\#348](https://github.com/solarkennedy/puppet-consul/pull/348) ([tlevi](https://github.com/tlevi))
+- support other unspecified RedHat variants [\#341](https://github.com/solarkennedy/puppet-consul/pull/341) ([cspargo](https://github.com/cspargo))
+- Notify the service when package is updated [\#340](https://github.com/solarkennedy/puppet-consul/pull/340) ([jaxxstorm](https://github.com/jaxxstorm))
+- Test changes for property [\#334](https://github.com/solarkennedy/puppet-consul/pull/334) ([jk2l](https://github.com/jk2l))
+- Ensure /usr/local/bin is in the path for consul binary [\#313](https://github.com/solarkennedy/puppet-consul/pull/313) ([mspaulding06](https://github.com/mspaulding06))
+
+## [v3.0.0](https://github.com/solarkennedy/puppet-consul/tree/v3.0.0) (2017-04-19)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v2.1.1...v3.0.0)
+
+**Closed issues:**
+
+- Execution of 'unzip -o /var/lib/consul/archives/consul-0.7.4.zip' returned 1:  [\#332](https://github.com/solarkennedy/puppet-consul/issues/332)
+- please specify json module version minimum [\#328](https://github.com/solarkennedy/puppet-consul/issues/328)
+- Could not look up qualified variable '$::consul\_version' [\#327](https://github.com/solarkennedy/puppet-consul/issues/327)
+
+**Merged pull requests:**
+
+- BREAKING - Consul 0.8.0 fixes [\#337](https://github.com/solarkennedy/puppet-consul/pull/337) ([lobeck](https://github.com/lobeck))
+
+## [v2.1.1](https://github.com/solarkennedy/puppet-consul/tree/v2.1.1) (2017-03-16)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v2.1.0...v2.1.1)
+
+**Closed issues:**
+
+- Curl return code 35 when fetching the consul binary. [\#320](https://github.com/solarkennedy/puppet-consul/issues/320)
+- Consul - Error: Invalid parameter temp\_dir\(:temp\_dir\) [\#317](https://github.com/solarkennedy/puppet-consul/issues/317)
+- Error: Cannot create /opt/consul/archives; parent directory /opt/consul does not exist [\#311](https://github.com/solarkennedy/puppet-consul/issues/311)
+- consul\_acl created on every puppet run [\#211](https://github.com/solarkennedy/puppet-consul/issues/211)
+
+**Merged pull requests:**
+
+- Try pinning more things in fixtures [\#326](https://github.com/solarkennedy/puppet-consul/pull/326) ([solarkennedy](https://github.com/solarkennedy))
+- Remove unnecessary .gitkeep files in lib/ [\#325](https://github.com/solarkennedy/puppet-consul/pull/325) ([cosmopetrich](https://github.com/cosmopetrich))
+- Fix idempotent issue within key\_value runs. [\#323](https://github.com/solarkennedy/puppet-consul/pull/323) ([jrasell](https://github.com/jrasell))
+- Reduce travis matrix [\#322](https://github.com/solarkennedy/puppet-consul/pull/322) ([solarkennedy](https://github.com/solarkennedy))
+- Bump default consul version. Improve FreeBSD support [\#319](https://github.com/solarkennedy/puppet-consul/pull/319) ([olevole](https://github.com/olevole))
+- fix ::consul\_version fact lookup during installation [\#316](https://github.com/solarkennedy/puppet-consul/pull/316) ([wstiern](https://github.com/wstiern))
+
+## [v2.1.0](https://github.com/solarkennedy/puppet-consul/tree/v2.1.0) (2017-01-12)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v2.0.0...v2.1.0)
+
+**Closed issues:**
+
+- Annoying "defined 'protocol' as 'http' " for every consul\_acl resource [\#310](https://github.com/solarkennedy/puppet-consul/issues/310)
+- Issues with default data-dir post-\#292 [\#307](https://github.com/solarkennedy/puppet-consul/issues/307)
+
+**Merged pull requests:**
+
+- Actually fix the changes every run problem [\#315](https://github.com/solarkennedy/puppet-consul/pull/315) ([mrwulf](https://github.com/mrwulf))
+- Changes every run [\#312](https://github.com/solarkennedy/puppet-consul/pull/312) ([mrwulf](https://github.com/mrwulf))
+- Better acl rules message [\#309](https://github.com/solarkennedy/puppet-consul/pull/309) ([mrwulf](https://github.com/mrwulf))
+- Use data\_dir as a the root of the archive path. Fixes \#307 [\#308](https://github.com/solarkennedy/puppet-consul/pull/308) ([solarkennedy](https://github.com/solarkennedy))
+
+## [v2.0.0](https://github.com/solarkennedy/puppet-consul/tree/v2.0.0) (2016-12-29)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v1.1.0...v2.0.0)
+
+**Implemented enhancements:**
+
+- Support for prepared queries [\#239](https://github.com/solarkennedy/puppet-consul/issues/239)
+
+**Closed issues:**
+
+- cant use latest consul version as parameter [\#305](https://github.com/solarkennedy/puppet-consul/issues/305)
+- EC2 Join Support [\#302](https://github.com/solarkennedy/puppet-consul/issues/302)
+- Consul user is created with login shell [\#293](https://github.com/solarkennedy/puppet-consul/issues/293)
+- Validate and document all params that could be passed to ::consul [\#170](https://github.com/solarkennedy/puppet-consul/issues/170)
+
+**Merged pull requests:**
+
+- Add support of custom log\_file in sles and upstart init scripts [\#306](https://github.com/solarkennedy/puppet-consul/pull/306) ([AlexLov](https://github.com/AlexLov))
+- More Systemd unit file improvements [\#304](https://github.com/solarkennedy/puppet-consul/pull/304) ([amiryal](https://github.com/amiryal))
+- Check $::consul\_version more correctly [\#303](https://github.com/solarkennedy/puppet-consul/pull/303) ([logic](https://github.com/logic))
+- Cleanup Systemd unit file [\#301](https://github.com/solarkennedy/puppet-consul/pull/301) ([amiryal](https://github.com/amiryal))
+- Fixing init service start/stop messages and locks [\#300](https://github.com/solarkennedy/puppet-consul/pull/300) ([mrwulf](https://github.com/mrwulf))
+- Initial support for FreeBSD platform [\#299](https://github.com/solarkennedy/puppet-consul/pull/299) ([olevole](https://github.com/olevole))
+- Revert "Set login shell for consul user to /sbin/nologin" [\#298](https://github.com/solarkennedy/puppet-consul/pull/298) ([solarkennedy](https://github.com/solarkennedy))
+- Set login shell for consul user to /sbin/nologin [\#297](https://github.com/solarkennedy/puppet-consul/pull/297) ([madAndroid](https://github.com/madAndroid))
+- add support for prepared query templates [\#296](https://github.com/solarkennedy/puppet-consul/pull/296) ([adamcstephens](https://github.com/adamcstephens))
+- KV Provider / Prepared Query Bugfixes [\#294](https://github.com/solarkennedy/puppet-consul/pull/294) ([djtaylor](https://github.com/djtaylor))
+- BREAKING: Change the default 'archive\_path' to '/opt/consul/archives'. [\#292](https://github.com/solarkennedy/puppet-consul/pull/292) ([jmkeyes](https://github.com/jmkeyes))
+- ADD parameter "log\_file" for custom log location [\#289](https://github.com/solarkennedy/puppet-consul/pull/289) ([miso231](https://github.com/miso231))
+- Prepared Queries [\#288](https://github.com/solarkennedy/puppet-consul/pull/288) ([djtaylor](https://github.com/djtaylor))
+- Catch :undef when pretty-printing in consul\_sorted\_json.rb [\#287](https://github.com/solarkennedy/puppet-consul/pull/287) ([tdevelioglu](https://github.com/tdevelioglu))
+- Reduce the travis matrix even more [\#286](https://github.com/solarkennedy/puppet-consul/pull/286) ([solarkennedy](https://github.com/solarkennedy))
+- Remove puppet error when ACLs cannot be retrieved [\#285](https://github.com/solarkennedy/puppet-consul/pull/285) ([thejandroman](https://github.com/thejandroman))
+- Drop pinning for 1.8.7 as there are no tests for it anymore. [\#281](https://github.com/solarkennedy/puppet-consul/pull/281) ([tdevelioglu](https://github.com/tdevelioglu))
+
+## [v1.1.0](https://github.com/solarkennedy/puppet-consul/tree/v1.1.0) (2016-09-23)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v1.0.12...v1.1.0)
+
+**Merged pull requests:**
+
+- Update downloaded version to latest stable \(0.7.0\) [\#280](https://github.com/solarkennedy/puppet-consul/pull/280) ([tdevelioglu](https://github.com/tdevelioglu))
+
+## [v1.0.12](https://github.com/solarkennedy/puppet-consul/tree/v1.0.12) (2016-09-23)
+[Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v1.0.10...v1.0.12)
 
 **Closed issues:**
 
@@ -15,7 +349,6 @@
 
 **Merged pull requests:**
 
-- Update downloaded version to latest stable \(0.7.0\) [\#280](https://github.com/solarkennedy/puppet-consul/pull/280) ([tdevelioglu](https://github.com/tdevelioglu))
 - Decouple service from init system [\#279](https://github.com/solarkennedy/puppet-consul/pull/279) ([tdevelioglu](https://github.com/tdevelioglu))
 - Polish [\#278](https://github.com/solarkennedy/puppet-consul/pull/278) ([tdevelioglu](https://github.com/tdevelioglu))
 - Require a new version of puppet-archive [\#277](https://github.com/solarkennedy/puppet-consul/pull/277) ([solarkennedy](https://github.com/solarkennedy))
@@ -91,7 +424,7 @@
 - add support for arm \(Raspberry pi's ARM here\) architecture [\#234](https://github.com/solarkennedy/puppet-consul/pull/234) ([gibre](https://github.com/gibre))
 - Added custom init style "custom" [\#233](https://github.com/solarkennedy/puppet-consul/pull/233) ([ph0enix49](https://github.com/ph0enix49))
 - lazily return nil when consul client isn't installed [\#227](https://github.com/solarkennedy/puppet-consul/pull/227) ([roobert](https://github.com/roobert))
-- add NOFILE limit to systemd template [\#226](https://github.com/solarkennedy/puppet-consul/pull/226) ([DjxDeaf](https://github.com/DjxDeaf))
+- add NOFILE limit to systemd template [\#226](https://github.com/solarkennedy/puppet-consul/pull/226) ([eliranbz](https://github.com/eliranbz))
 - Debian init script should depend on networking, resolution and syslog [\#222](https://github.com/solarkennedy/puppet-consul/pull/222) ([chrisboulton](https://github.com/chrisboulton))
 - When reloading consul, use 127.0.0.1 as rpc\_addr when rpc\_addr was set to 0.0.0.0 [\#221](https://github.com/solarkennedy/puppet-consul/pull/221) ([danielbenzvi](https://github.com/danielbenzvi))
 - Add hostname proprety for ACL operations, defaults to localhost, like before [\#219](https://github.com/solarkennedy/puppet-consul/pull/219) ([gozer](https://github.com/gozer))
@@ -112,7 +445,7 @@
 **Merged pull requests:**
 
 - ACL fixes - idempotentcy and port bug. [\#214](https://github.com/solarkennedy/puppet-consul/pull/214) ([sigerber](https://github.com/sigerber))
-- Fix port property [\#213](https://github.com/solarkennedy/puppet-consul/pull/213) ([horsehay](https://github.com/horsehay))
+- Fix port property [\#213](https://github.com/solarkennedy/puppet-consul/pull/213) ([afterwords](https://github.com/afterwords))
 - Add support of OpenSuSE and SLED [\#212](https://github.com/solarkennedy/puppet-consul/pull/212) ([kscherer](https://github.com/kscherer))
 - Fix web\_ui installation on Consul 0.6.0 and greater [\#208](https://github.com/solarkennedy/puppet-consul/pull/208) ([dbeckham](https://github.com/dbeckham))
 - mitigate .to\_json segfaults on Ruby 1.8.7 [\#205](https://github.com/solarkennedy/puppet-consul/pull/205) ([duritong](https://github.com/duritong))
@@ -139,7 +472,7 @@
 - Updating staging file download to use the version and symlink [\#202](https://github.com/solarkennedy/puppet-consul/pull/202) ([hopperd](https://github.com/hopperd))
 - Updated download\_urls used to be the new releases.hashicorp.com location [\#201](https://github.com/solarkennedy/puppet-consul/pull/201) ([hopperd](https://github.com/hopperd))
 - parameterize config file mode [\#200](https://github.com/solarkennedy/puppet-consul/pull/200) ([aj-jester](https://github.com/aj-jester))
-- Add parameter for setting port to custom acl type [\#197](https://github.com/solarkennedy/puppet-consul/pull/197) ([horsehay](https://github.com/horsehay))
+- Add parameter for setting port to custom acl type [\#197](https://github.com/solarkennedy/puppet-consul/pull/197) ([afterwords](https://github.com/afterwords))
 - Allow ACL ID to be writeable [\#196](https://github.com/solarkennedy/puppet-consul/pull/196) ([robrankin](https://github.com/robrankin))
 - need at least 4.6.0 of puppetlabs/stdlib  [\#191](https://github.com/solarkennedy/puppet-consul/pull/191) ([gdhbashton](https://github.com/gdhbashton))
 - Remove management of unzip package [\#189](https://github.com/solarkennedy/puppet-consul/pull/189) ([danieldreier](https://github.com/danieldreier))
@@ -204,11 +537,11 @@
 - Make consul::install optional [\#135](https://github.com/solarkennedy/puppet-consul/pull/135) ([potto007](https://github.com/potto007))
 - Add an exec to daemon-reload systemctl when the unit-file changes [\#134](https://github.com/solarkennedy/puppet-consul/pull/134) ([robrankin](https://github.com/robrankin))
 - Fix issue \#129 - https://github.com/solarkennedy/puppet-consul/issues/129 [\#133](https://github.com/solarkennedy/puppet-consul/pull/133) ([potto007](https://github.com/potto007))
-- Escape the ID & make fixtures useable more widely [\#132](https://github.com/solarkennedy/puppet-consul/pull/132) ([duritong](https://github.com/duritong))
 - Change name of File\['config.json'\] to File\['consul config.json'\] [\#131](https://github.com/solarkennedy/puppet-consul/pull/131) ([EvanKrall](https://github.com/EvanKrall))
 - Switch to using start-stop-daemon for consul upstart init script [\#130](https://github.com/solarkennedy/puppet-consul/pull/130) ([bdellegrazie](https://github.com/bdellegrazie))
 - Supply optional token for ACL changes [\#128](https://github.com/solarkennedy/puppet-consul/pull/128) ([mdelagrange](https://github.com/mdelagrange))
 - Fix pidfile handling on Debian [\#121](https://github.com/solarkennedy/puppet-consul/pull/121) ([weitzj](https://github.com/weitzj))
+- Update puppetlabs-stdlib dependency to 4.2.0 for the delete\_undef\_values function [\#111](https://github.com/solarkennedy/puppet-consul/pull/111) ([zxjinn](https://github.com/zxjinn))
 
 ## [v1.0.0](https://github.com/solarkennedy/puppet-consul/tree/v1.0.0) (2015-04-30)
 [Full Changelog](https://github.com/solarkennedy/puppet-consul/compare/v0.4.6...v1.0.0)
@@ -227,9 +560,9 @@
 
 **Merged pull requests:**
 
+- Escape the ID & make fixtures useable more widely [\#132](https://github.com/solarkennedy/puppet-consul/pull/132) ([duritong](https://github.com/duritong))
 - Debian 8.0+ uses systemd [\#113](https://github.com/solarkennedy/puppet-consul/pull/113) ([CyBeRoni](https://github.com/CyBeRoni))
 - Update README, ensure passingonly is a bool [\#112](https://github.com/solarkennedy/puppet-consul/pull/112) ([zxjinn](https://github.com/zxjinn))
-- Update puppetlabs-stdlib dependency to 4.2.0 for the delete\_undef\_values function [\#111](https://github.com/solarkennedy/puppet-consul/pull/111) ([zxjinn](https://github.com/zxjinn))
 - Revert "Allow setting of the umask for the consul daemon." [\#108](https://github.com/solarkennedy/puppet-consul/pull/108) ([sjoeboo](https://github.com/sjoeboo))
 - Allow setting of the umask for the consul daemon. [\#106](https://github.com/solarkennedy/puppet-consul/pull/106) ([EvanKrall](https://github.com/EvanKrall))
 - Respect user and group in launchd. [\#105](https://github.com/solarkennedy/puppet-consul/pull/105) ([EvanKrall](https://github.com/EvanKrall))
@@ -287,8 +620,8 @@
 - Adding "status" to the debian init script [\#64](https://github.com/solarkennedy/puppet-consul/pull/64) ([paulhamby](https://github.com/paulhamby))
 - Allow hash keys to be set to undef [\#60](https://github.com/solarkennedy/puppet-consul/pull/60) ([bodepd](https://github.com/bodepd))
 - Add config\_defaults hash parameter [\#54](https://github.com/solarkennedy/puppet-consul/pull/54) ([michaeltchapman](https://github.com/michaeltchapman))
-- Make init\_style can be disabled [\#53](https://github.com/solarkennedy/puppet-consul/pull/53) ([TieWei](https://github.com/TieWei))
-- Make rake spec running [\#52](https://github.com/solarkennedy/puppet-consul/pull/52) ([TieWei](https://github.com/TieWei))
+- Make init\_style can be disabled [\#53](https://github.com/solarkennedy/puppet-consul/pull/53) ([tiewei](https://github.com/tiewei))
+- Make rake spec running [\#52](https://github.com/solarkennedy/puppet-consul/pull/52) ([tiewei](https://github.com/tiewei))
 - use versioncmp to compare versions [\#49](https://github.com/solarkennedy/puppet-consul/pull/49) ([jfroche](https://github.com/jfroche))
 - Allow overriding a service's name [\#47](https://github.com/solarkennedy/puppet-consul/pull/47) ([jsok](https://github.com/jsok))
 - Make puppet-consul install on OS X [\#44](https://github.com/solarkennedy/puppet-consul/pull/44) ([EvanKrall](https://github.com/EvanKrall))

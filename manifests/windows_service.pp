@@ -1,60 +1,30 @@
-class consul::windows_service(
-  $nssm_version = '2.24',
-  $nssm_download_url = undef,
-  $nssm_download_url_base = 'https://nssm.cc/release',
-) {
-  $real_download_url = pick($nssm_download_url, "${nssm_download_url_base}/nssm-${nssm_version}.zip")
+# == Class consul::windows_service
+#
+# Installs consul windows server
+# == Parameters
+#
+# [*sys32*]
+#   path to system32 folder
+#
+# [*service_name*]
+#   Name of the service
+#
+class consul::windows_service (
+  $sys32 = 'c:\\windows\\system32',
+  $service_name = 'Consul'
+  )
+{
+  $executable_file = "${consul::bin_dir}\\${consul::binary_name}"
+  $service_config = "start= auto binPath= \"${executable_file} agent -config-dir=${$consul::config_dir}\" obj= \"${consul::binary_owner}\""
 
-  $install_path = $::consul_downloaddir
-
-  case $::architecture {
-    'x32': {
-      $nssm_exec = "${install_path}/nssm-${nssm_version}/win32/nssm.exe"
-    }
-    'x64': {
-      $nssm_exec = "${install_path}/nssm-${nssm_version}/win64/nssm.exe"
-    }
-    default: {
-      fail("Unknown architecture for windows - ${::architecture}")
-    }
+  exec { 'create_consul_service':
+    command => "sc.exe create ${service_name} ${service_config}",
+    path    => $sys32,
+    unless  => "sc.exe query ${service_name}",
   }
-
-  $app_dir = regsubst($consul::bin_dir, '\/', '\\', 'G')
-  $app_exec = "${app_dir}\\consul.exe"
-  $configdir_args = regsubst($consul::config_dir, '\/', '\\', 'G')
-  $datadir_args = regsubst($consul::data_dir, '\/', '\\', 'G')
-  $app_args = "agent -config-dir=${configdir_args} -data-dir=${datadir_args}"
-  $app_log_error = "${app_dir}\\logs\\consul-error.log"
-  $app_log_output = "${app_dir}\\logs\\consul-output.log"
-
-  archive { "${install_path}/nssm-${nssm_version}.zip":
-    ensure => present,
-    source => $real_download_url,
-    extract => true,
-    extract_path => $install_path,
-    creates => [
-      "${install_path}/nssm-${nssm_version}/win32/nssm.exe",
-      "${install_path}/nssm-${nssm_version}/win64/nssm.exe",
-    ]
-  }->
-  exec { 'consul_service_install':
-    cwd => $consul::bin_dir,
-    command => "${nssm_exec} install Consul \"${app_exec}\"",
-    unless => 'if((Get-Service -Name Consul -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) { exit 0; } else { exit 1; }',
-    logoutput => true,
-    provider => 'powershell',
-    notify => Exec['consul_service_set_parameters']
-  }->
-  file { "${consul::bin_dir}/set_service_parameters.ps1":
-    ensure  => 'present',
-    content => template('consul/set_service_parameters.ps1.erb'),
-    notify  => Exec['consul_service_set_parameters']
-  }->
-  exec { 'consul_service_set_parameters':
-    cwd         => $consul::bin_dir,
-    command     => "& \"${consul::bin_dir}/set_service_parameters.ps1\"",
+  exec { 'update_consul_service':
+    command     => "sc.exe config ${service_name} ${service_config}",
+    path        => $sys32,
     refreshonly => true,
-    logoutput   => true,
-    provider    => 'powershell',
   }
 }

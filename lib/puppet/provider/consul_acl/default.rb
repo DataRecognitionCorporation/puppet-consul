@@ -1,5 +1,6 @@
 require 'json'
 require 'net/http'
+require 'pp'
 require 'uri'
 Puppet::Type.type(:consul_acl).provide(
   :default
@@ -21,7 +22,7 @@ Puppet::Type.type(:consul_acl).provide(
 
       found_acl = found_acls.first || nil
       if found_acl
-        Puppet.debug("found #{found_acl}")
+        Puppet.debug("found #{found_acl.pretty_inspect}")
         resource.provider = new(found_acl)
       else
         Puppet.debug("found none #{name}")
@@ -31,8 +32,9 @@ Puppet::Type.type(:consul_acl).provide(
   end
 
   def self.list_resources(acl_api_token, port, hostname, protocol, tries)
-    if @acls
-      return @acls
+    @acls ||= {}
+    if @acls[ "#{acl_api_token}#{port}#{hostname}#{protocol}#{tries}" ]
+      return @acls[ "#{acl_api_token}#{port}#{hostname}#{protocol}#{tries}" ]
     end
 
     # this might be configurable by searching /etc/consul.d
@@ -43,6 +45,7 @@ Puppet::Type.type(:consul_acl).provide(
     path=uri.request_uri + "/list?token=#{acl_api_token}"
     req = Net::HTTP::Get.new(path)
     res = nil
+    res_code = nil
 
     # retry Consul API query for ACLs, in case Consul has just started
     (1..tries).each do |i|
@@ -50,34 +53,40 @@ Puppet::Type.type(:consul_acl).provide(
         Puppet.debug("retrying Consul API query in #{i} seconds")
         sleep i
       end
-      res = http.request(req)
-      break if res.code == '200'
+
+      begin
+        res = http.request(req)
+        res_code = res.code
+        break if res_code == '200'
+      rescue Errno::ECONNREFUSED => exc
+        Puppet.debug("#{uri}/list?token=<redacted> #{exc.class} #{exc.message}")
+        res_code = exc.class.to_s
+      end
     end
 
-    if res.code == '200'
+    if res_code == '200'
       acls = JSON.parse(res.body)
     else
-      Puppet.warning("Cannot retrieve ACLs: invalid return code #{res.code} uri: #{path} body: #{req.body}")
+      Puppet.warning("Cannot retrieve ACLs: invalid return code #{res_code} uri: #{path} body: #{req.body}")
       return {}
     end
 
     nacls = acls.collect do |acl|
-      if !acl['Rules'].empty?
-        { :name   => acl["Name"],
-             :type   => acl["Type"],
-             :rules  => JSON.parse(acl["Rules"]),
-             :id     => acl["ID"],
-             :ensure => :present}
-      else
-        { :name   => acl["Name"],
-             :type   => acl["Type"],
-             :rules  => {},
-             :id     => acl["ID"],
-             :ensure => :present}
-      end
+      {
+        :name   => acl["Name"],
+        :type   => acl["Type"].intern,
+        :rules  => acl['Rules'].empty? ? {} : JSON.parse(acl["Rules"]),
+        :id     => acl["ID"],
+        :acl_api_token => acl_api_token,
+        :port => port,
+        :hostname => hostname,
+        :protocol => protocol,
+        :api_tries => tries,
+        :ensure => :present
+      }
     end
 
-    @acls = nacls
+    @acls[ "#{acl_api_token}#{port}#{hostname}#{protocol}#{tries}" ] = nacls
     nacls
   end
 

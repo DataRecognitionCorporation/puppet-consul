@@ -14,8 +14,8 @@ Puppet::Type.newtype(:consul_acl) do
 
   newproperty(:type) do
     desc 'Type of token'
-    newvalues('client', 'management')
-    defaultto 'client'
+    newvalues(:client, :management)
+    defaultto :client
   end
 
   newparam(:acl_api_token) do
@@ -32,6 +32,15 @@ Puppet::Type.newtype(:consul_acl) do
     validate do |value|
       raise ArgumentError, "ACL rules must be provided as a hash" if not value.is_a?(Hash)
     end
+
+    def is_to_s(value)
+      should_to_s(value)
+    end
+
+    def should_to_s(value)
+      require 'pp'
+      value.pretty_inspect
+    end
   end
 
   newproperty(:id) do
@@ -40,8 +49,8 @@ Puppet::Type.newtype(:consul_acl) do
 
   newproperty(:protocol) do
     desc 'consul protocol'
-    newvalues('http', 'https')
-    defaultto 'http'
+    newvalues(:http, :https)
+    defaultto :http
   end
 
   newparam(:port) do
