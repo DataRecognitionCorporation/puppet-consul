@@ -24,18 +24,11 @@ class consul::reload_service {
       default: { $command = "consul reload -http-addr=${http_addr}:${consul::http_port}" }
     }
 
-    $exec_provider = $::operatingsystem ? {
-      'windows' => 'powershell',
-      default => undef,
-    }
-
     exec { 'reload consul service':
       path        => [$consul::bin_dir,'/bin','/usr/bin'],
       command     => $command,
       refreshonly => true,
       tries       => 3,
-      cwd         => $consul::bin_dir,
-      provider    => $exec_provider,
     }
   }
 }
